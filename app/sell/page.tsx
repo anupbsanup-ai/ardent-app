@@ -1,5 +1,5 @@
 "use client";
-import Nav from "../../components/Nav";
+import Nav from "../../components/NavWrapper";
 import Footer from "../../components/Footer";
 import { useState } from "react";
 

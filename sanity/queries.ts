@@ -61,8 +61,13 @@ export const LISTING_BY_SLUG_QUERY = `
 
 export const SITE_SETTINGS_QUERY = `
   *[_type == "siteSettings"][0] {
-    siteTitle, tagline, email, phone, address,
-    instagram, linkedin, facebook,
-    "logoUrl": logo.asset->url
+    siteTitle, tagline, description, primaryColor,
+    email, phone, address, mapEmbedUrl,
+    instagram, linkedin, facebook, twitter, whatsapp,
+    heroHeadline, heroSubheadline, heroCtaLabel,
+    "logoUrl": logo.asset->url,
+    "heroImageUrl": heroImage.asset->url,
+    "ogImageUrl": ogImage.asset->url,
+    stats
   }
 `;

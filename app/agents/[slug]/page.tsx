@@ -1,4 +1,4 @@
-import Nav from "../../../components/Nav";
+import Nav from "../../../components/NavWrapper";
 import Footer from "../../../components/Footer";
 import Link from "next/link";
 import AgentContactForm from "../../../components/AgentContactForm";

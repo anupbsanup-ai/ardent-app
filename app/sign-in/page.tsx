@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import Nav from "../../components/Nav";
+import Nav from "../../components/NavWrapper";
 import Footer from "../../components/Footer";
 
 export default function SignInPage() {

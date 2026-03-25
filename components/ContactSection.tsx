@@ -2,9 +2,20 @@
 import { useState } from "react";
 import siteConfig from "../site.config";
 
-export default function ContactSection() {
+type Props = {
+  email?: string;
+  phone?: string;
+  address?: string;
+  mapEmbedUrl?: string | null;
+};
+
+export default function ContactSection({ email, phone, address, mapEmbedUrl }: Props) {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  const displayEmail   = email   ?? siteConfig.contact.email;
+  const displayPhone   = phone   ?? siteConfig.contact.phone;
+  const displayAddress = address ?? siteConfig.contact.address;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -38,31 +49,46 @@ export default function ContactSection() {
           </p>
 
           <div className="space-y-4 mb-10">
-            <a href={`mailto:${siteConfig.contact.email}`} className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
-              <span className="text-primary">✉</span> {siteConfig.contact.email}
+            <a href={`mailto:${displayEmail}`} className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
+              <span className="text-primary">✉</span> {displayEmail}
             </a>
-            <a href={`tel:${siteConfig.contact.phone}`} className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
-              <span className="text-primary">✆</span> {siteConfig.contact.phone}
+            <a href={`tel:${displayPhone}`} className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
+              <span className="text-primary">✆</span> {displayPhone}
             </a>
             <p className="flex items-start gap-3 text-white/70">
               <span className="text-primary mt-0.5">⌖</span>
-              <span style={{ whiteSpace: "pre-line" }}>{siteConfig.contact.address}</span>
+              <span style={{ whiteSpace: "pre-line" }}>{displayAddress}</span>
             </p>
           </div>
 
-          {/* Office image */}
-          <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: "16/9" }}>
-            <img
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80"
-              alt="ARDENT office"
-              className="w-full h-full object-cover opacity-80"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            <div className="absolute bottom-4 left-4">
-              <p className="text-white/50 text-xs">New York, NY</p>
-              <p className="text-white font-bold">123 Main Street, Suite 400</p>
+          {/* Google Map or office image */}
+          {mapEmbedUrl ? (
+            <div className="relative rounded-2xl overflow-hidden" style={{ height: "220px" }}>
+              <iframe
+                src={mapEmbedUrl}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Office location"
+              />
             </div>
-          </div>
+          ) : (
+            <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: "16/9" }}>
+              <img
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80"
+                alt="ARDENT office"
+                className="w-full h-full object-cover opacity-80"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-4 left-4">
+                <p className="text-white/50 text-xs">Our Office</p>
+                <p className="text-white font-bold" style={{ whiteSpace: "pre-line" }}>{displayAddress}</p>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Form */}

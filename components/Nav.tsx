@@ -3,8 +3,16 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import siteConfig from "../site.config";
 
-export default function Nav() {
+type Props = {
+  siteName?: string;
+  logoUrl?: string | null;
+};
+
+export default function Nav({ siteName, logoUrl }: Props) {
   const [scrolled, setScrolled] = useState(false);
+
+  const name = siteName ?? siteConfig.name;
+  const logo = logoUrl ?? siteConfig.logo.image;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -20,12 +28,12 @@ export default function Nav() {
     >
       {/* Logo */}
       <Link href="/" className="text-[22px] font-black tracking-tight">
-        {siteConfig.logo.image ? (
-          <img src={siteConfig.logo.image} alt={siteConfig.name} className="h-8" />
+        {logo ? (
+          <img src={logo} alt={name} className="h-8" />
         ) : (
           <>
-            {siteConfig.logo.text.slice(0, -1)}
-            <span className="text-primary">{siteConfig.logo.text.slice(-1)}</span>
+            {name.slice(0, -1)}
+            <span className="text-primary">{name.slice(-1)}</span>
           </>
         )}
       </Link>
