@@ -37,7 +37,7 @@ export default function ContactSection() {
             Ready to find your next property or list your home? Our team is here to help every step of the way.
           </p>
 
-          <div className="space-y-4">
+          <div className="space-y-4 mb-10">
             <a href={`mailto:${siteConfig.contact.email}`} className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
               <span className="text-primary">✉</span> {siteConfig.contact.email}
             </a>
@@ -48,6 +48,20 @@ export default function ContactSection() {
               <span className="text-primary mt-0.5">⌖</span>
               <span style={{ whiteSpace: "pre-line" }}>{siteConfig.contact.address}</span>
             </p>
+          </div>
+
+          {/* Office image */}
+          <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: "16/9" }}>
+            <img
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80"
+              alt="ARDENT office"
+              className="w-full h-full object-cover opacity-80"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute bottom-4 left-4">
+              <p className="text-white/50 text-xs">New York, NY</p>
+              <p className="text-white font-bold">123 Main Street, Suite 400</p>
+            </div>
           </div>
         </div>
 

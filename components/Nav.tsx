@@ -54,11 +54,11 @@ export default function Nav() {
         </Link>
         <Link
           href={siteConfig.nav.ctaHref}
-          className="text-sm font-bold text-white bg-black rounded-full px-5 py-2.5 flex items-center gap-2
-                     hover:bg-[#333] transition-colors duration-200
+          className="text-sm font-bold text-black bg-primary rounded-full px-5 py-2.5 flex items-center gap-2
+                     hover:brightness-110 transition-[filter,transform] duration-200
                      focus-visible:outline-2 focus-visible:outline-black focus-visible:outline-offset-2
                      active:scale-95"
-          style={{ transition: "background 0.25s, transform 0.2s" }}
+          style={{ transition: "filter 0.25s, transform 0.2s" }}
         >
           {siteConfig.nav.ctaLabel}
           <span aria-hidden>→</span>

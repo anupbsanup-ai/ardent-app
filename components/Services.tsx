@@ -24,39 +24,65 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Service rows */}
-        <div className="divide-y divide-silver">
-          {siteConfig.services.map((s, i) => (
-            <Link
-              key={s.slug}
-              href={s.href}
-              className="group flex items-center justify-between py-6 hover:pl-2
-                         transition-[padding] duration-300"
-            >
-              <div className="flex items-center gap-8">
-                <span className="text-silver text-sm font-mono w-6">0{i + 1}</span>
-                <h3
-                  className="font-heading font-black text-black group-hover:text-primary
-                             transition-colors duration-200"
-                  style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", letterSpacing: "-0.02em" }}
-                >
-                  {s.title}
-                </h3>
-              </div>
-              <div className="flex items-center gap-6">
-                <p className="text-grey text-sm hidden md:block max-w-xs" style={{ lineHeight: "1.6" }}>
-                  {s.description}
-                </p>
-                <span
-                  className="w-10 h-10 rounded-full border border-silver flex items-center justify-center
-                               text-grey group-hover:border-black group-hover:text-black group-hover:bg-black
-                               group-hover:text-white transition-all duration-300 shrink-0"
-                >
-                  →
-                </span>
-              </div>
-            </Link>
-          ))}
+        {/* Service grid with images */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          {siteConfig.services.slice(0, 2).map((s, i) => {
+            const imgs = [
+              "https://images.unsplash.com/photo-1560184897-ae75f418493e?w=800&q=80",
+              "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=80",
+            ];
+            return (
+              <Link
+                key={s.slug}
+                href={s.href}
+                className="group relative overflow-hidden rounded-2xl"
+                style={{ aspectRatio: "16/9" }}
+              >
+                <img
+                  src={imgs[i]}
+                  alt={s.title}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105
+                             transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <p className="text-primary text-xs font-semibold tracking-[0.15em] uppercase mb-1">0{i + 1}</p>
+                  <h3 className="text-white font-black text-2xl" style={{ letterSpacing: "-0.02em" }}>{s.title}</h3>
+                  <p className="text-white/60 text-sm mt-1">{s.description}</p>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {siteConfig.services.slice(2).map((s, i) => {
+            const imgs = [
+              "https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=800&q=80",
+              "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+            ];
+            return (
+              <Link
+                key={s.slug}
+                href={s.href}
+                className="group relative overflow-hidden rounded-2xl"
+                style={{ aspectRatio: "16/9" }}
+              >
+                <img
+                  src={imgs[i]}
+                  alt={s.title}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105
+                             transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <p className="text-primary text-xs font-semibold tracking-[0.15em] uppercase mb-1">0{i + 3}</p>
+                  <h3 className="text-white font-black text-2xl" style={{ letterSpacing: "-0.02em" }}>{s.title}</h3>
+                  <p className="text-white/60 text-sm mt-1">{s.description}</p>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>

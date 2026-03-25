@@ -20,6 +20,14 @@ export default function Hero() {
         }}
       />
 
+      {/* Hero background image */}
+      <img
+        src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80"
+        alt="Luxury real estate"
+        className="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-luminosity"
+        aria-hidden
+      />
+
       {/* SVG grain texture */}
       <svg className="absolute inset-0 w-full h-full opacity-[0.04] pointer-events-none" aria-hidden>
         <filter id="grain">
@@ -29,7 +37,7 @@ export default function Hero() {
         <rect width="100%" height="100%" filter="url(#grain)" />
       </svg>
 
-      <div className="relative max-w-7xl mx-auto px-6 md:px-12 py-24">
+      <div className="relative max-w-7xl mx-auto px-6 md:px-12 py-24 grid md:grid-cols-2 gap-12 items-center">
         <div className="max-w-3xl">
           {/* Eyebrow */}
           <p
@@ -76,12 +84,35 @@ export default function Hero() {
             </Link>
             <Link
               href={secondaryCtaHref}
-              className="border border-white/30 text-white font-bold text-sm rounded-full px-7 py-3.5
-                         hover:border-white/60 hover:bg-white/5
+              className="border-2 border-white/70 text-white font-bold text-sm rounded-full px-7 py-3.5
+                         hover:border-white hover:bg-white/10
                          active:scale-95 transition-[transform,border-color,background] duration-200"
             >
               {secondaryCtaLabel}
             </Link>
+          </div>
+        </div>
+
+        {/* Hero side image */}
+        <div className="hidden md:block relative">
+          <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: "4/5" }}>
+            <img
+              src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80"
+              alt="Modern luxury home"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            {/* Floating badge */}
+            <div className="absolute bottom-6 left-6 right-6 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
+              <p className="text-white/60 text-xs mb-1">Featured Property</p>
+              <p className="text-white font-bold text-lg leading-tight">Modern Penthouse, NYC</p>
+              <p className="text-primary font-black text-xl mt-1">$4,250,000</p>
+            </div>
+          </div>
+          {/* Floating stat card */}
+          <div className="absolute -left-8 top-1/3 bg-white rounded-xl p-4 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+            <p className="text-grey text-xs mb-1">Avg. Days on Market</p>
+            <p className="text-black font-black text-2xl" style={{ letterSpacing: "-0.03em" }}>12</p>
           </div>
         </div>
       </div>
