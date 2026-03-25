@@ -61,34 +61,19 @@ export default function ContactSection({ email, phone, address, mapEmbedUrl }: P
             </p>
           </div>
 
-          {/* Google Map or office image */}
-          {mapEmbedUrl ? (
-            <div className="relative rounded-2xl overflow-hidden" style={{ height: "220px" }}>
-              <iframe
-                src={mapEmbedUrl}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Office location"
-              />
-            </div>
-          ) : (
-            <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: "16/9" }}>
-              <img
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80"
-                alt="ARDENT office"
-                className="w-full h-full object-cover opacity-80"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute bottom-4 left-4">
-                <p className="text-white/50 text-xs">Our Office</p>
-                <p className="text-white font-bold" style={{ whiteSpace: "pre-line" }}>{displayAddress}</p>
-              </div>
-            </div>
-          )}
+          {/* Google Map */}
+          <div className="relative rounded-2xl overflow-hidden" style={{ height: "220px" }}>
+            <iframe
+              src={mapEmbedUrl ?? "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215057764985!2d-73.98784168459273!3d40.74844397932881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Office location"
+            />
+          </div>
         </div>
 
         {/* Form */}
